@@ -56,4 +56,4 @@ set hlsearch " highlights all search matches
 
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
-"set colorcolumn=50
+set makeprg=pylint\ --reports=n\ --msg-template=\"{path}:{line}:\ {msg_id}\ {symbol},\ {obj}\ {msg}\"\ %:p
