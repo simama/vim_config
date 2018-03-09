@@ -56,4 +56,15 @@ set hlsearch " highlights all search matches
 
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
-set makeprg=pylint\ --reports=n\ --msg-template=\"{path}:{line}:\ {msg_id}\ {symbol},\ {obj}\ {msg}\"\ %:p
+function Checkpep8 ()
+    silent make
+    redraw!
+    if len(getqflist())
+        cl
+    endif
+endfunction Checkpep8
+
+set makeprg=pep8\ --repeat\ %
+autocmd BufWritePost call Checkpep8()
+
+"set makeprg=pylint\ --reports=n\ --msg-template=\"{path}:{line}:\ {msg_id}\ {symbol},\ {obj}\ {msg}\"\ %:p
